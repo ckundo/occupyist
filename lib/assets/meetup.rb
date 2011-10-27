@@ -14,16 +14,16 @@ module Meetup
       fields = 'udf_twitter_account,udf_twitter_hashtag'
 
       response = RestClient.get URL, {:params => {:key => ENV['MEETUP_API_KEY'], :urlname => Meetup::CONTAINER_NAME, :zip => zip, :fields => fields, :status => status, :page => page}, :accept => :json}
-      community = Community.find_by_meetup_id(id)
-
+      
       ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
       response = ic.iconv(response + ' ')[0..-2]
       data = JSON.parse(response)      
       
       data["results"].each do |result|
         if Event.find_by_meetup_id(result['id'])
-          break
+          next
         else
+          community = Community.find_or_create_by_meetup_id(result['community']['id'])
           event = Event.new
           event.twitter_account = result["udf_twitter_account"]
           event.twitter_hashtag = result["udf_twitter_hashtag"]
@@ -92,13 +92,12 @@ module Meetup
 
       data = JSON.parse(response)
    
-      community = Community.new
+      community = Community.find_or_create_by_meetup_id(id)
       community.city = data["city"]
       community.zip_code = data["zip"]
       community.state = data["state"]
       community.latitude = data["lat"]
       community.longitude = data["lon"]
-      community.meetup_id = id
       # community.twitter_hashtag = data["udf_twitter_hashtag"]
       # community.twitter_account = data["udf_twitter_account"]
 
