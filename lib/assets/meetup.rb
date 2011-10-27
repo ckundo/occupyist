@@ -8,7 +8,6 @@ module Meetup
     
     def self.fetch_by_community(zip, id)
       community_ids = id
-      zip = zip
       status = "upcoming"
       page = 100
       fields = 'udf_twitter_account,udf_twitter_hashtag'
@@ -97,7 +96,7 @@ module Meetup
      
         community.city = data["city"]
         community.state = data["state"]
-        community.zip = data["zip"]
+        community.zip_code = data["zip"]
         community.latitude = data["lat"]
         community.longitude = data["lon"]
         # community.twitter_hashtag = data["udf_twitter_hashtag"]
