@@ -1,14 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>OccupyRails</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+!!!
+%html
+  %head
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Anonymous+Pro:400,700'
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js'
+    = javascript_include_tag 'jquery.countdown.js'
 
-<%= yield %>
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0, user-scalable=no"}
+    %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}
+    %meta{:content => "A list of events and feeds related to the Occupy Wall Street movement.", :name => "description"}
+    
+    = csrf_meta_tags
+    %title Occupyist
 
-</body>
-</html>
+  %body
+    #container
+      #header
+        #logo
+          %h1
+            = link_to 'Occupyist', root_url
+        #tagline
+          %p Events and feeds of #OWS
+      #content= yield
+      #footer
+
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-10564451-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

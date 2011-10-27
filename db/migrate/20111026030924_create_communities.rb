@@ -1,7 +1,7 @@
 class CreateCommunities < ActiveRecord::Migration
   def change
     create_table :communities do |t|
-      t.integer :meetup_id
+      t.integer :meetup_id, :unique => true
       t.string :name
       t.string :city
       t.string :zip_code

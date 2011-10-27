@@ -4,10 +4,11 @@ gem 'rails', '3.1.0'
 
 gem 'jquery-rails'
 gem 'haml-rails'
-gem "rest-client", "~> 1.6.7"
+gem 'rest-client', "~> 1.6.7"
+gem 'bourbon'
 
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'sass-rails'
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end

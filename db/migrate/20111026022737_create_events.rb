@@ -1,7 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.integer :meetup_id
+      t.integer :meetup_id, :unique => true
       t.string :description
       t.datetime :start_time, :required => true
       t.datetime :end_time, :required => true

@@ -1,30 +1,28 @@
+require 'iconv'
+
 module Meetup
   CONTAINER_NAME = 'occupytogether'
   
   module Events
     URL = 'https://api.meetup.com/ew/events'
     
-    def self.fetch_by_community(id)
+    def self.fetch_by_community(zip, id)
       community_ids = id
+      zip = zip
       status = "upcoming"
-      page = "100"
+      page = 100
       fields = 'udf_twitter_account,udf_twitter_hashtag'
 
-      response = RestClient.get URL, {:params => {:key => ENV['MEETUP_API_KEY'], :urlname => Meetup::CONTAINER_NAME, :community_id => community_ids, :fields => fields, :status => status, :page => page}, :accept => :json}
-      
-      data = JSON.parse(response)
-          
-      data["results"].each do |result|
-        remote_id = result["community"]["id"]
-        if Community.find_by_meetup_id(remote_id)
-          puts "community already exists."
-          community = Community.find_by_meetup_id(remote_id)
-        else
-          Meetup::Communities.fetch(remote_id)
-        end
+      response = RestClient.get URL, {:params => {:key => ENV['MEETUP_API_KEY'], :urlname => Meetup::CONTAINER_NAME, :zip => zip, :fields => fields, :status => status, :page => page}, :accept => :json}
+      community = Community.find_by_meetup_id(id)
 
+      ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+      response = ic.iconv(response + ' ')[0..-2]
+      data = JSON.parse(response)      
+      
+      data["results"].each do |result|
         if Event.find_by_meetup_id(result['id'])
-          next
+          break
         else
           event = Event.new
           event.twitter_account = result["udf_twitter_account"]
@@ -41,11 +39,17 @@ module Meetup
           twitter_account_re = /@([A-Za-z0-9_]+)/
 
           if event.description
-            link = re1.match(event.description)
-            event.facebook_url = "http://#{link}" if link
+            puts event.description
+            begin
+              link = re1.match(event.description)
+              event.facebook_url = "http://#{link}" if link
+              
+              hashtag = twitter_hashtag_re.match(event.description)
+              user = twitter_account_re.match(event.description)
+            rescue Exception => e
+              puts "regex derped out: #{e.message}"
+            end
             
-            hashtag = twitter_hashtag_re.match(event.description)
-            user = twitter_account_re.match(event.description)
           end
 
           begin
@@ -80,7 +84,7 @@ module Meetup
     
     def self.fetch_events
       Community.all.each do |community|
-        Meetup::Events.fetch_by_community(community.meetup_id)
+        Meetup::Events.fetch_by_community(community.zip_code, community.meetup_id)
       end
     end
 
@@ -104,6 +108,29 @@ module Meetup
         puts "New community saved: #{community.zip_code}"
       rescue Exception => e
         puts "community save error: " + e.message
+      end
+    end
+
+    def self.fetch_nearby(zip)
+      page = 100;
+      url = 'https://api.meetup.com/ew/communities'
+      response = RestClient.get url, {:params => {:key => ENV['MEETUP_API_KEY'], :url_name => 'occupytogether', :zip => zip, :page => page}, :accept => :json}
+      data = JSON.parse(response)
+      
+      data['results'].each do |result|
+        community = Community.new
+        community.city = result["city"]
+        community.zip_code = result["zip"]
+        community.state = result["state"]
+        community.latitude = result["lat"]
+        community.longitude = result["lon"]
+        community.meetup_id = result["id"]
+
+        begin
+          community.save
+        rescue Exception => e
+          puts "Couldn't save community: #{e.message}"
+        end
       end
     end
   end

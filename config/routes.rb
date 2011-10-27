@@ -1,17 +1,7 @@
 OccupyRails::Application.routes.draw do
-  get "communities/index"
-
-  get "communities/show"
-
-  get "locations/index"
-
-  get "locations/show"
-
-  get "events/index"
-  get "events/show"
-  root :to => 'events#index'
+  root :to => 'communities#index'
   
-  resources :locations do
+  resources :communities do
     resources :events
   end
 

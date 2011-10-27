@@ -1,0 +1,266 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+*/
+
+@import "bourbon";
+
+$occupyist_orange:#ff002a;
+
+html, body {
+  height:100%;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: small;
+  width: 1200px;
+  color:#bbb;
+  background-color:#efefef;
+
+  #container {
+    width:1000px;
+    margin: 10px auto;
+    background-color:#fff;
+    padding:30px 70px 0 30px;
+    min-height:100%;
+
+    a:link, a:visited {
+      text-decoration:none;
+      opacity:0.6;
+    }
+
+    a:hover {
+      text-decoration:underline;
+    }
+
+    #events, #streams {
+      margin: 0 0 20px 0;
+      
+      a.feed {
+        font-size:60%;
+        font-weight:normal;
+        color: #bbb;
+      }
+    }
+    
+    #header {
+      margin: 0 30px 10px 0;
+      float:left;
+
+      h1 {
+        font-family: 'Anonymous Pro', sans-serif;
+        font-size: 260%;
+        letter-spacing: 3px;
+        font-weight: bold;
+        text-transform:uppercase;
+      
+        a, a:link, a:hover, a:visited {
+          color:$occupyist_orange;
+          opacity:1;
+        }
+      }
+
+      p {
+        font-size:120%;
+        color:#ccc
+      }
+    }
+
+    #showcase {
+      float:right;
+      
+      p {
+        float:right;
+      }
+
+      #next-event {
+        display:block;
+        font-size:280%;
+        font-family: 'Anonymous Pro', sans-serif;
+      }
+
+      .countdown_section {
+        float:left;
+      }
+    }
+    
+    #search {
+      margin: 0 0 26px 0;
+
+      input.query {
+        width:150px;
+      }
+    }
+
+    h2 {
+      font-size: 130%;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 100%;
+      text-transform:uppercase;
+      font-weight: normal;
+      margin: 0 0 4px 0;
+      color:#666;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    .community {
+      margin: 0 0 12px 0;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 0 0 18px 0;
+
+      li.event {
+        width:100%;
+        min-width:900px;
+        padding:4px 0;
+        
+        .hidden {
+          display:none;
+        }
+        
+        .time {
+          font-weight:bold;
+          float:left;
+          margin-right:20px;
+          width:50px;
+        }
+        
+        .details {
+          width:760px;
+          float:left;
+
+          a.description {
+            float:left;
+            width: 560px;
+            margin:0 20px 0 0;
+            color:#666;
+            white-space: nowrap;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            -ms-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+          }
+
+          a.description:hover {
+            text-decoration:underline;
+            color:#444;
+          }
+        
+          .status {
+            font-size:80%;
+            float:right;
+            margin-right:10px;
+            color:#444;
+
+            .timestamp {
+              display:none;
+            }
+
+            .countdown_section {
+              float:left;
+            }
+          }
+
+        }
+        .info {
+          float:right;
+          width:160px;
+
+          .rsvp, .feeds {
+            float:left;            
+          }
+
+          .button {
+            margin:0 10px 0 0;
+            cursor:pointer;
+          }
+          
+          .button:before {
+            content: "» ";
+            opacity:0;
+          }
+
+          .button:hover:before {
+            opacity:1;
+          }
+
+          .button:hover {
+            text-decoration:none;
+          }
+
+          .links {
+            margin-right:8px;
+
+            a {
+              float:left;
+              margin-right:6px;
+            }
+
+            a:before {
+              content: "» ";
+            }
+
+            a:hover {
+              // color:#ff00ff;
+            }
+          }
+
+          .today {
+            font-weight:bold;
+          }
+
+        }
+      }
+
+      li.event:hover {
+        background-color:#efefef;
+        // width:1000px;
+        color:#555;
+        
+        .button {
+          text-decoration:underline;
+          color: #0000ff;
+        }
+
+        a:link, a:hover {
+          opacity:1;
+        }
+
+        .status {
+          color:$occupyist_orange;
+        }
+      }
+      
+
+      .upcoming {
+      }
+
+      .past, .pending {
+        color:#bbb;
+      }
+    }
+    
+    .clear {
+      clear:both;
+    }
+  }
+}
+
+
+
