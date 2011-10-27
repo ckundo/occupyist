@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111027003000) do
+ActiveRecord::Schema.define(:version => 20111027151935) do
 
   create_table "communities", :force => true do |t|
     t.integer  "meetup_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20111027003000) do
 
   create_table "events", :force => true do |t|
     t.integer  "meetup_id"
-    t.string   "description"
+    t.text     "description",     :limit => 255
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "meetup_url"
