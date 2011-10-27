@@ -1,0 +1,6 @@
+- @communities.each do |community|
+  .community
+    %h2.locale= @community.locale
+    %ul.events
+      - @community.events.each do |event|
+        %li= event.description
