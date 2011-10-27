@@ -1,7 +1,7 @@
 #showcase
-  %span#next_event{:value => ''}
+  %span#next_event{:value => "#{@next_event.start_time.to_f}"}
   .clear
   %p until next
-  = link_to 'event'
-  = link_to "(#{})"
+  = link_to 'event', @next_event.meetup_url
+  = link_to "(#{@next_event.community.city})"
 .clear
