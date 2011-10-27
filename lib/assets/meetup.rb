@@ -23,7 +23,7 @@ module Meetup
         if Event.find_by_meetup_id(result['id'])
           next
         else
-          community = Community.find_or_create_by_meetup_id(result['community']['id'], :zip => result["zip"])
+          community = Community.find_or_create_by_meetup_id(:meetup_id => result['community']['id'], :zip_code => result["zip"])
           event = Event.new
           event.twitter_account = result["udf_twitter_account"]
           event.twitter_hashtag = result["udf_twitter_hashtag"]
@@ -97,6 +97,7 @@ module Meetup
      
         community.city = data["city"]
         community.state = data["state"]
+        community.zip = data["zip"]
         community.latitude = data["lat"]
         community.longitude = data["lon"]
         # community.twitter_hashtag = data["udf_twitter_hashtag"]
