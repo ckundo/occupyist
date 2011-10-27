@@ -13,6 +13,10 @@ group :assets do
   gem 'uglifier'
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'sqlite3'

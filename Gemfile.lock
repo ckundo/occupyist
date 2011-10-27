@@ -74,6 +74,7 @@ GEM
     mime-types (1.17.2)
     minitest (2.7.0)
     multi_json (1.0.3)
+    pg (0.11.0)
     polyglot (0.3.2)
     rack (1.3.5)
     rack-cache (1.0.3)
@@ -153,6 +154,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   minitest
+  pg
   rails (= 3.1.0)
   rest-client (~> 1.6.7)
   rspec-rails
