@@ -2,18 +2,19 @@
 = render :partial => 'search'
 #events
   - @communities.each do |community|
-    .community
-      %h3= "#{community.city}, #{community.state}"
-      %ul
-        - community.events.each do |event|
-          %li.event
-            %strong.time= event.start_time.strftime("%m/%d/%y")
-            .details
-              = link_to event.description, event.meetup_url, :class => 'description'
-              %em.status
-                %span.timestamp{:value => event.start_time}
-                %span.formatted-time - 
+    - unless community.events.empty?
+      .community
+        %h3= "#{community.city}, #{community.state}"
+        %ul
+          - community.events.each do |event|
+            %li.event
+              %strong.time= event.start_time.strftime("%m/%d/%y")
+              .details
+                = link_to event.description, event.meetup_url, :class => 'description'
+                %em.status
+                  %span.timestamp{:value => event.start_time}
+                  %span.formatted-time - 
+                .clear
+              .info
+                .feeds
               .clear
-            .info
-              .feeds
-            .clear
