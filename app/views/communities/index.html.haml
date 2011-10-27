@@ -22,4 +22,8 @@
                   - elsif event.twitter_hashtag
                     %a.button{:href => "http://twitter.com/#!/search/%23" + event.twitter_hashtag.gsub('#', '%23'), :target => "_blank"} Twitter
                   .clear
+                .rsvp
+                  - if event.facebook_url
+                    %a.button{:href => event.facebook_url, :target => "_blank"} Facebook
+                .clear
               .clear
