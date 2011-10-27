@@ -13,7 +13,7 @@
                 = link_to event.description, event.meetup_url, :class => 'description'
                 %em.status
                   %span.timestamp{:value => event.start_time}
-                  %span.formatted-time - 
+                  %span.formatted-time= distance_of_time_in_words(Time.now, event.start_time)
                 .clear
               .info
                 .feeds
