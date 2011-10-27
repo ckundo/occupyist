@@ -23,7 +23,7 @@ module Meetup
         if Event.find_by_meetup_id(result['id'])
           next
         else
-          community = Community.find_or_create_by_meetup_id(result['community']['id'])
+          community = Community.find_or_create_by_meetup_id(result['community']['id'], :zip => result["zip"])
           event = Event.new
           event.twitter_account = result["udf_twitter_account"]
           event.twitter_hashtag = result["udf_twitter_hashtag"]
@@ -90,13 +90,12 @@ module Meetup
     def self.fetch(id)
       community = Community.find_or_create_by_meetup_id(id)
       
-      unless community.zip_code
+      unless community.latitude
         response = RestClient.get (URL + id.to_s), {:params => {:key => ENV['MEETUP_API_KEY'], :fields => FIELDS}, :accept => :json}
 
         data = JSON.parse(response)
      
         community.city = data["city"]
-        community.zip_code = data["zip"]
         community.state = data["state"]
         community.latitude = data["lat"]
         community.longitude = data["lon"]
