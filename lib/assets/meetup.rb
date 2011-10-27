@@ -28,7 +28,7 @@ module Meetup
           event.twitter_account = result["udf_twitter_account"]
           event.twitter_hashtag = result["udf_twitter_hashtag"]
           event.community_id = community.id
-          event.description = result["description"][0..100]
+          event.description = result["description"]
           event.meetup_url = result["meetup_url"]
           event.meetup_id = result["id"]
           event.start_time = Time.at(result["time"]/1000) if result["time"]
