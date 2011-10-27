@@ -90,7 +90,7 @@ module Meetup
     def self.fetch(id)
       community = Community.find_or_create_by_meetup_id(id)
       
-      unless community.zip
+      unless community.zip_code
         response = RestClient.get (URL + id.to_s), {:params => {:key => ENV['MEETUP_API_KEY'], :fields => FIELDS}, :accept => :json}
 
         data = JSON.parse(response)
