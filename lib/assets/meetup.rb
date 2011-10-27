@@ -88,24 +88,27 @@ module Meetup
     end
 
     def self.fetch(id)
-      response = RestClient.get (URL + id.to_s), {:params => {:key => ENV['MEETUP_API_KEY'], :fields => FIELDS}, :accept => :json}
-
-      data = JSON.parse(response)
-   
       community = Community.find_or_create_by_meetup_id(id)
-      community.city = data["city"]
-      community.zip_code = data["zip"]
-      community.state = data["state"]
-      community.latitude = data["lat"]
-      community.longitude = data["lon"]
-      # community.twitter_hashtag = data["udf_twitter_hashtag"]
-      # community.twitter_account = data["udf_twitter_account"]
+      
+      unless community.zip
+        response = RestClient.get (URL + id.to_s), {:params => {:key => ENV['MEETUP_API_KEY'], :fields => FIELDS}, :accept => :json}
 
-      begin
-        community.save!
-        puts "New community saved: #{community.zip_code}"
-      rescue Exception => e
-        puts "community save error: " + e.message
+        data = JSON.parse(response)
+     
+        community.city = data["city"]
+        community.zip_code = data["zip"]
+        community.state = data["state"]
+        community.latitude = data["lat"]
+        community.longitude = data["lon"]
+        # community.twitter_hashtag = data["udf_twitter_hashtag"]
+        # community.twitter_account = data["udf_twitter_account"]
+
+        begin
+          community.save!
+          puts "New community saved: #{community.zip_code}"
+        rescue Exception => e
+          puts "community save error: " + e.message
+        end
       end
     end
 
