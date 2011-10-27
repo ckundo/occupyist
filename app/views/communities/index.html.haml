@@ -20,6 +20,6 @@
                   - if event.twitter_account
                     %a.button{:href => "http://twitter.com/#!/" + event.twitter_account, :target => "_blank"} Twitter
                   - elsif event.twitter_hashtag
-                    %a.button{:href => "http://twitter.com/#!/search/" + event.twitter_hashtag.gsub('#', '%23'), :target => "_blank"} Twitter
+                    %a.button{:href => "http://twitter.com/#!/search/%23" + event.twitter_hashtag.gsub('#', '%23'), :target => "_blank"} Twitter
                   .clear
               .clear
