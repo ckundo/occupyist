@@ -12,7 +12,7 @@
               .details
                 = link_to event.description, event.meetup_url, :class => 'description'
                 %em.status
-                  %span.timestamp{:value => event.start_time}
+                  %span.timestamp{:value => event.start_time.to_f}
                   %span.formatted-time= distance_of_time_in_words(Time.now, event.start_time)
                 .clear
               .info
