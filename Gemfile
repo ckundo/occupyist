@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'rest-client', "~> 1.6.7"
 gem 'bourbon'
+gem 'geocoder'
 
 group :assets do
   gem 'sass-rails'

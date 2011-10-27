@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20111027151935) do
 
   create_table "events", :force => true do |t|
     t.integer  "meetup_id"
-    t.text     "description",     :limit => 255
+    t.text     "description"
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "meetup_url"

@@ -1,4 +1,4 @@
 #search
-  %form{:method => 'get', :action => '/locations'}
-    %input.query{:name => 'q', :placeholder => 'search by city or zip'}
-    %input{:type => 'submit', :value => 'go'}
+  = form_tag '/communities', :method => 'get' do
+    = text_field_tag 'q', nil, :placeholder => 'search by city or zip', :class => 'query'
+    = submit_tag "Go"

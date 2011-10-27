@@ -1,7 +1,11 @@
 class CommunitiesController < ApplicationController
 
   def index
-    @communities = Community.all
+    if params[:q]
+      @communities = Community.near(params[:q], 50)
+    else
+      @communities = Community.all
+    end
     @next_event = Event.all.sort {|a,b| b.start_time <=> a.start_time}.last
   end
 
