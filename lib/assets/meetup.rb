@@ -28,7 +28,7 @@ module Meetup
           event.twitter_account = result["udf_twitter_account"]
           event.twitter_hashtag = result["udf_twitter_hashtag"]
           event.community_id = community.id
-          event.description = result["description"]
+          event.description = result["description"][0..40]
           event.meetup_url = result["meetup_url"]
           event.meetup_id = result["id"]
           event.start_time = Time.at(result["time"]/1000) if result["time"]
@@ -39,13 +39,12 @@ module Meetup
           twitter_account_re = /@([A-Za-z0-9_]+)/
 
           if event.description
-            puts event.description
             begin
-              link = re1.match(event.description)
+              link = re1.match(result['description'])
               event.facebook_url = "http://#{link}" if link
               
-              hashtag = twitter_hashtag_re.match(event.description)
-              user = twitter_account_re.match(event.description)
+              hashtag = twitter_hashtag_re.match(result['description'])
+              user = twitter_account_re.match(result['description'])
             rescue Exception => e
               puts "regex derped out: #{e.message}"
             end
