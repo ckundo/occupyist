@@ -2,7 +2,9 @@ class CommunitiesController < ApplicationController
 
   def index
     if params[:q]
-      @communities = Community.near(params[:q], 50)
+      @communities = Community.near(params[:q], 150)
+    elsif params[:nearby]
+      @communities = Community.near(request.location, 150)
     else
       @communities = Community.all
     end

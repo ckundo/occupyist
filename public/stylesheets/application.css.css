@@ -2,11 +2,11 @@
 Syntax error: File to import not found or unreadable: bourbon.
               Load paths:
                 Compass::SpriteImporter
-                /Users/ckundo/code/occupyist-staging/public/stylesheets/sass
-                /Users/ckundo/code/occupyist-staging/app/assets/stylesheets
+                /Users/ckundo/Dropbox/src/occupy-rails/public/stylesheets/sass
+                /Users/ckundo/Dropbox/src/occupy-rails/app/assets/stylesheets
                 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets
                 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets
-        on line 8 of /Users/ckundo/code/occupyist-staging/app/assets/stylesheets/application.css.scss
+        on line 8 of /Users/ckundo/Dropbox/src/occupy-rails/app/assets/stylesheets/application.css.scss
 
 3:  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
 4:  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -21,7 +21,7 @@ Syntax error: File to import not found or unreadable: bourbon.
 13:   height:100%;
 
 Backtrace:
-/Users/ckundo/code/occupyist-staging/app/assets/stylesheets/application.css.scss:8
+/Users/ckundo/Dropbox/src/occupy-rails/app/assets/stylesheets/application.css.scss:8
 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.10/lib/sass/tree/import_node.rb:64:in `rescue in import'
 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.10/lib/sass/tree/import_node.rb:42:in `import'
 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.10/lib/sass/tree/import_node.rb:25:in `imported_file'
@@ -80,24 +80,14 @@ Backtrace:
 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.3.5/lib/rack/lock.rb:15:in `call'
 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0/lib/action_dispatch/middleware/static.rb:53:in `call'
 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.1.0/lib/rails/engine.rb:455:in `call'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.1.0/lib/rails/railtie/configurable.rb:30:in `method_missing'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/connection.rb:84:in `block in pre_process'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/connection.rb:82:in `catch'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/connection.rb:82:in `pre_process'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/connection.rb:57:in `process'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/connection.rb:42:in `receive_data'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/backends/base.rb:61:in `start'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/server.rb:159:in `start'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/controllers/controller.rb:86:in `start'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/runner.rb:185:in `run_command'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/lib/thin/runner.rb:151:in `run!'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.2.11/bin/thin:6:in `<top (required)>'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/bin/thin:19:in `load'
-/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/bin/thin:19:in `<main>'
+/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.1.0/lib/rails/rack/content_length.rb:16:in `call'
+/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.1.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.3.5/lib/rack/handler/webrick.rb:59:in `service'
+/Users/ckundo/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/ckundo/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/ckundo/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: bourbon.\A               Load paths:\A                 Compass::SpriteImporter\A                 /Users/ckundo/code/occupyist-staging/public/stylesheets/sass\A                 /Users/ckundo/code/occupyist-staging/app/assets/stylesheets\A                 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 8 of /Users/ckundo/code/occupyist-staging/app/assets/stylesheets/application.css.scss\A \A 3:  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at\A 4:  * the top of the compiled file, but it's generally better to create a new file per style scope.\A 5:  *= require_self\A 6: */\A 7: \A 8: @import \"bourbon\";\A 9: \A 10: $occupyist_orange:#ff002a;\A 11: \A 12: html, body {\A 13:   height:100%;"; }
+  content: "Syntax error: File to import not found or unreadable: bourbon.\A               Load paths:\A                 Compass::SpriteImporter\A                 /Users/ckundo/Dropbox/src/occupy-rails/public/stylesheets/sass\A                 /Users/ckundo/Dropbox/src/occupy-rails/app/assets/stylesheets\A                 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /Users/ckundo/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 8 of /Users/ckundo/Dropbox/src/occupy-rails/app/assets/stylesheets/application.css.scss\A \A 3:  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at\A 4:  * the top of the compiled file, but it's generally better to create a new file per style scope.\A 5:  *= require_self\A 6: */\A 7: \A 8: @import \"bourbon\";\A 9: \A 10: $occupyist_orange:#ff002a;\A 11: \A 12: html, body {\A 13:   height:100%;"; }
