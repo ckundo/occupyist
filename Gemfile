@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.3'
 
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -10,7 +10,6 @@ gem 'geocoder'
 
 group :assets do
   gem 'sass-rails'
-  gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
 

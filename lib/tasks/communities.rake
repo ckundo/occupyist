@@ -1,4 +1,4 @@
-namespace :community do
+namespace :communities do
   desc 'interact with remote events'
 
   task :update_events => :environment do
